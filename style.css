@@ -1,6 +1,7 @@
 body {
     height: 100vh;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     font-size: 5rem;
@@ -18,4 +19,39 @@ p::after {
     content: 'goodbye';
     background: red;
     font-weight: 900;
+}
+
+blockquote::before {
+    content: open-quote;
+}
+
+blockquote::after {
+    content: close-quote;
+}
+
+span[data-tool-tip] {
+    position: relative;
+}
+
+span[data-tool-tip]::after {
+    content: attr(data-tool-tip);
+    display: block;
+    position: absolute;
+    background-color: grey;
+    padding: 5px 15px;
+    color: white;
+    border-radius: 5px;
+    font-size: .75em;
+    bottom: 0;
+    left: 0;
+    white-space: nowrap;
+    transform: scale(0);
+    transition: 
+        transform ease-out 150ms,
+        bottom ease-out 150ms;
+}
+
+span[data-tool-tip]:hover::after {
+    transform: scale(1);
+    bottom: 100%;
 }
